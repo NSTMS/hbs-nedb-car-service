@@ -1,0 +1,31 @@
+{{> navbar}}
+<form action="/removeFromList" method="post" class="px-5 py-5">
+    <caption><h2>{{title}}</h2></caption>
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">_id</th>
+                <th scope="col">ubezpieczony</th>
+                <th scope="col">benzyna</th>
+                <th scope="col">uszkodzony</th>
+                <th scope="col">napęd 4x4</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each list}}
+            <tr class="align-middle">
+                <th scope="row">{{ _id }}</th>
+                <td>{{ insured }}</td>
+                <td>{{ petrol}}</td>
+                <td>{{ damaged }}</td>
+                <td>{{ drive }}</td>
+                <td>
+                    <button class="btn btn-danger" type="submit" name="toDel" value={{this._id}}
+                        onclick="return confirm('czy usunąć?')">delete</button>
+                </tr>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</form>

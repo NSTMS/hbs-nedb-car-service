@@ -1,0 +1,70 @@
+{{> navbar}}
+
+<div class="px-5 py-5">
+    <caption><h2>{{title}}</h2></caption>
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">_id</th>
+            <th scope="col">ubezpieczony</th>
+            <th scope="col">benzyna</th>
+            <th scope="col">uszkodzony</th>
+            <th scope="col">napęd 4x4</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        {{#if (isToEdit _id)}}
+        <tr class="align-middle">
+            <form action="/editInList" method="post">
+                <td>{{ _id }}</td>
+                <td>{{ insured }}</td>
+                <td>{{ petrol}}</td>
+                <td>{{ damaged }}</td>
+                <td>{{ drive }}</td>
+                <td><button class="btn btn-dark" type="submit" name="toEdit" value={{this._id}}>edit</button>
+            </form>
+        </tr>
+        {{else}}
+        <tr class="align-middle">
+            <form action="/sumbitEditing" method="post">
+                <td>{{ _id }}</td>
+                <td>
+                    <select name="ubezpieczony" id={{"ubezpieczony"}}>
+                        <option value="TAK">TAK</option>
+                        <option value="NIE">NIE</option>
+                    </select>
+                    </td>
+                <td>
+                    <select name="benzyna" id={{"benzyna"}}>
+                        <option value="TAK">TAK</option>
+                        <option value="NIE">NIE</option>
+                    </select>
+                    </td>
+                <td>
+                    <select name="uszkodzony" id={{"uszkodzony"}}>
+                        <option value="TAK">TAK</option>
+                        <option value="NIE">NIE</option>
+                    </select>
+                    </td>
+                <td>
+                    <select name="naped" id={{"naped"}}>
+                        <option value="TAK">TAK</option>
+                        <option value="NIE">NIE</option>
+                    </select>
+                </td>
+                <td>
+                    <button class="btn btn-info" type="submit" name="submitEd" value={{this._id}}>sumbit</button>
+                            {{#if (isEditingRn isEditing)}}
+                    <a href="/edit" class="btn btn-danger">cancel</a>
+                {{/if}}
+                </td>
+            </form>
+        </tr>
+        {{/if}}
+
+        {{/each}}
+    </tbody>
+</table>
+</div>

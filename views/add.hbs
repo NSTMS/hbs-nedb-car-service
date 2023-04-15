@@ -1,0 +1,29 @@
+{{> navbar}}
+
+{{#if isSumbited}}
+<div class="alert alert-warning alert-dismissible fade show mx-2 my-2 rounded text-center align-middle" role="alert">
+  <p>Pomyślnie dodano samochód o <strong> _id: {{value}}</strong> do bazy!</p>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+<form action="/addToElements" method="post" class="text-center align-middle py-5 pt-5">
+    <div class="py-4">
+        <h2>Jaki jest twój samochód: </h2>
+    </div>
+    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group my-5">
+            <input class="btn-check" type="checkbox" name="ubezpieczony" id="check-1" value=1 autocomplete="off">
+            <label class="btn btn-outline-danger" for="check-1">ubezpieczony</label>
+            <input class="btn-check" type="checkbox" name="benzyna" id="check-2" value=1 autocomplete="off">
+            <label class="btn btn-outline-danger" for="check-2">benzynowy</label>
+            <input class="btn-check" type="checkbox" name="uszkodzony" id="check-3" value=1 autocomplete="off">
+            <label class="btn btn-outline-danger" for="check-3">uszkodzony</label>
+            <input class="btn-check"type="checkbox"name="4x4" id="check-4" value=1 autocomplete="off">
+            <label class="btn btn-outline-danger" for="check-4">z napędem 4x4</label>
+    </div>
+
+    <div>
+    <input type="submit" value="dodaj" class="btn btn-primary my-5" >
+
+    </div>
+</form>
